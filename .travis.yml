@@ -8,6 +8,8 @@ before_install:
 script:
   - docker run hung6066/docker-react npm run test -- --coverage
 
+install: travis_wait 30 mvn install
+
 deloy:
   provider: elasticbeanstalk
   region: "us-east-2"
@@ -17,6 +19,6 @@ deloy:
   bucket_path: "docker-react"
   on:
     branch: main
-  access_key_id: $AWS_ACCESS_KEY
-  secret_access_key:
-    secure: "$AWS_SECRET_KEY"
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key:
+      secure: "$AWS_SECRET_KEY"
