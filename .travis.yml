@@ -1,4 +1,5 @@
 sudo: required
+install: travis_wait 30 mvn install
 servies:
   - docker
 
@@ -7,8 +8,6 @@ before_install:
 
 script:
   - docker run hung6066/docker-react npm run test -- --coverage
-
-install: travis_wait 30 mvn install
 
 deloy:
   provider: elasticbeanstalk
